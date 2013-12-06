@@ -32,7 +32,8 @@ SETUP TWITTER
 
 RUN THE WEB APP
 ---------------
-* Just type the following on a web browser
+- Just type the following on a web browser
+
 ```sh
 localhost:8888
 ```
