@@ -1,32 +1,33 @@
 Phone Halo Twitter
 ==================
 
-INSTRUCTIONS:
-
 
 INSTALL SERVER
-1. You may put this folder anywhere it is convenient to you.
-    * Make sure this folder and all of its contents are readable and writable to all users.
-        - On the Finder window, right click on this folder and choose "Get Info".
-        - On the sharings permission, make sure all users have read and write access.
-        - For every user, select "Apply to enclosed items" on the settings drop down below it.
-2. Download MAMP (free, non-pro version): http://www.mamp.info/en/index.html
-3. Install MAMP.
-4. Run MAMP and click on the "Preferences" button and select the "Apache" tab.
-5. Select this folder as the Document Root.
-6. Start the servers (click on Start Servers).
-7. Open Terminal and go to this folder. Type the following to run the setup:
-        php setup.php
+--------------
 
-
+	- You may put this folder anywhere it is convenient to you.
+    	- Make sure this folder and all of its contents are readable and writable to all users.
+        	- On the Finder window, right click on this folder and choose "Get Info".
+        	- On the sharings permission, make sure all users have read and write access.
+        	- For every user, select "Apply to enclosed items" on the settings drop down below it.
+	- Download MAMP (free, non-pro version): http://www.mamp.info/en/index.html
+	- Install MAMP.
+	- Run MAMP and click on the "Preferences" button and select the "Apache" tab.
+	- Select this folder as the Document Root.
+	- Start the servers (click on Start Servers).
+	- Open Terminal and go to this folder. Type the following to run the setup:
+```sh        
+php setup.php
+```
 
 SETUP TWITTER
+-------------
 
-1. Obtain the Consumer Key, Consumer Secret, User Token, and User Secret of your Twitter account.
-    - Go to https://dev.twitter.com and sign in
-    - Create an application. Make sure the Application Type access is Read and Write (stream and sending tweets, respectively). 
-    - The wizard will automatically generate the four keys mentioned above.
-2. Fill out the file twitter/twitter-account.txt with the corresponding keys.
+	- Obtain the Consumer Key, Consumer Secret, User Token, and User Secret of your Twitter account.
+    	- Go to https://dev.twitter.com and sign in
+    	- Create an application. Make sure the Application Type access is Read and Write (stream and sending tweets, respectively). 
+    	- The wizard will automatically generate the four keys mentioned above.
+	- Fill out the file twitter/twitter-account.txt with the corresponding keys.
 
 
 
