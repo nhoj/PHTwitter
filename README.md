@@ -32,8 +32,10 @@ SETUP TWITTER
 
 RUN THE WEB APP
 ---------------
-* Just type localhost:8888
-
+* Just type the following on a web browser
+```sh
+localhost:8888
+```
 
 
 USING THE WEB APP
@@ -45,38 +47,42 @@ USING THE WEB APP
 
 * Fetch Tweets
     - Tweets will be displayed on the screen from latest to the earliest tweets. It fetches 10 rows at a time.
-    - NOTE:     > If streaming is ongoing, there may be tweets that will be newer to the latest tweet on the screen. 
-                > If you prefer to get the latest everytime, just refresh the page and click the "Fetch Tweets" again.
+    - NOTE:     
+    	- If streaming is ongoing, there may be tweets that will be newer to the latest tweet on the screen. 
+        - If you prefer to get the latest everytime, just refresh the page and click the "Fetch Tweets" again.
                 
 * Reply to tweets
     - To reply to tweets, select any of the tweets on the screen using the checkboxes.
     - Select which message to send to the selected tweets on the dropdown box on the right.
     - Click "Send reply to selected tweets"
-    - NOTE:     > Replied tweets are automatically erased in the screen and the list refreshes to the latest tweets.
+    - NOTE:     
+    	- Replied tweets are automatically erased in the screen and the list refreshes to the latest tweets.
     
 * Deleting Tweets
     - This is used to delete false positive tweets
     - Select tweets using the checkboxes, then click on "Delete selected tweets".
     
-===============================================================================================================================
 
 MISCELLANEOUS
+=============
 
 
 EDIT TWITTER REPLY MESSAGES
+---------------------------
 - Twitter reply messages are found in twitter/twitter-messages.txt
 - (One line is one message)
 
 
 EDIT SEARCH TERMS
+-----------------
 - Search terms are found in twitter/twitter-search-terms.txt
 - Only contains one line. 
 - Multiple search terms are separated by commas
 
-===============================================================================================================================
 
 
 CAVEATS
+=======
 
 * If you keep the streaming active, you may run out of disk space. You may also be banned from Twitter for some time.
 * Replying to a tweet only removes it on the screen and NOT on the database. 
