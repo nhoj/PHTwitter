@@ -62,6 +62,7 @@ USING THE WEB APP
 * Reply to tweets
     - To reply to tweets, select any of the tweets on the screen using the checkboxes.
     - Select which message to send to the selected tweets on the dropdown box on the right.
+    - Select the account to use to send the selected tweets on the dropdown box right below the message.
     - Click `Send reply to selected tweets`
     - NOTE:     
     	- Replied tweets are automatically erased in the screen and the list refreshes to the latest tweets.
