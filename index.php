@@ -12,6 +12,12 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+    
+    <style>
+        #table-div {
+            overflow: auto;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -21,10 +27,10 @@
         <button type="button" class="btn btn-primary hidden" disabled="disabled" id="stop-stream">Stop Stream</button>&nbsp;
         <button type="button" class="btn btn-primary" id="fetch-tweets">Fetch Tweets</button>
         
-        <p>&nbsp;</p>
+        <p id="first-p">&nbsp;</p>
         
         <div class="row">
-            <div class="col-md-8 table-responsive">
+            <div id="table-div" class="col-md-8 table-responsive">
                 <table id="main-table" class="table table-condensed table-hover">
                     <thead>
                         <tr>
@@ -275,6 +281,13 @@
         $("#fetch-tweets").click(fetchTweets).trigger("click");
         $("#send-tweet").click(sendTweet);
         $("#delete-tweet").click(deleteTweets);
+        
+        var tableResize = function () {
+            $("#table-div").height($(window).height() - ($("#first-p").height() + $("#first-p").position().top) - 20);
+        };
+        
+        tableResize();
+        $(window).resize(tableResize);
         
     </script>
 </body>
