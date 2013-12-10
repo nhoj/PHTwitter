@@ -4,7 +4,6 @@ Phone Halo Twitter
 
 INSTALL SERVER
 --------------
-  - __NOTE__: This instruction is only for Macs.
   - You may put this folder anywhere it is convenient to you.
     - Make sure this folder and all of its contents are readable and writable to all users.
     	- On the Finder window, right click on this folder and choose `Get Info`.
@@ -28,13 +27,10 @@ SETUP TWITTER
 	- Go to [Twitter Dev](https://dev.twitter.com) and sign in
     - Create an application. Make sure the `Application Type` access is __Read and Write__ (stream and sending tweets, respectively). 
     - The wizard will automatically generate the four keys mentioned above.
-  - Fill out the file `twitter/streaming-twitter-account.txt` with the corresponding keys. This account will be used to fetch tweets. Do not leave any blank lines after the last line.
-  - Fill out the file `twitter/twitter-accounts.txt` with the corresponding keys. These accounts are used to reply to tweets
+  - Fill out the file twitter/streaming-twitter-account.txt with the corresponding keys.
+  - Fill out the file twitter/twitter-accounts.txt with the corresponding keys. These accounts are used to reply to tweets
     - Can have more than one account. Just copy and paste the 5 keys and fill out the necessary information
     - `account_name` is the name of the account to be shown on the web app.
-    - __NOTE__:
-        - The contents of the file are just sample values. They don't work. Fill out your own account information
-        - Do not leave any blank lines after the last line.
 
 
 RUN THE WEB APP
@@ -60,9 +56,8 @@ USING THE WEB APP
         - If you prefer to get the latest everytime, just refresh the page and click the `Fetch Tweets` again.
 
 * Reply to tweets
-    - To reply to tweets, select any of the tweets on the screen using the checkboxes.
+    - To reply to tweets, select any of the tweets on the screen using the checkboxes or simply clicking the table row.
     - Select which message to send to the selected tweets on the dropdown box on the right.
-    - Select the account to use to send the selected tweets on the dropdown box right below the message.
     - Click `Send reply to selected tweets`
     - NOTE:     
     	- Replied tweets are automatically erased in the screen and the list refreshes to the latest tweets.
