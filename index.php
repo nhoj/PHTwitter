@@ -100,7 +100,7 @@
                 );
             },
             fetchTweets = function (callback) {
-                console.log("fetching tweets", start, limit);
+                //console.log("fetching tweets", start, limit);
                 $("#fetch-tweets").attr("disabled", "disabled");
                 $.post("twitter-services.php", 
                     JSON.stringify({
@@ -149,19 +149,19 @@
     
         // callbacks
         var handleStartStream = function (data) {
-                console.log(data);
+                //console.log(data);
 
                 $("#stop-stream").removeAttr("disabled", "");
                 $("#start-stream").attr("disabled", "disabled");
             },
             handleStopStream = function (data) {
-                console.log(data);
+                //console.log(data);
 
                 $("#start-stream").removeAttr("disabled", "");
                 $("#stop-stream").attr("disabled", "disabled");
             },
             handleIsStreaming = function (data) {
-                console.log("here's the data: ", data);
+                //console.log("here's the data: ", data);
 
                 $("#start-stream, #stop-stream").removeClass("hidden");
                 if (data.code === 1 && data.message) {
@@ -201,10 +201,10 @@
                         .click(function () {
                             if ($(this).is(":checked")) {
                                 $(this).parents("tr").addClass("selected");
-                                console.log("checked", $(this).parents("tr"));
+                                //console.log("checked", $(this).parents("tr"));
                             } else {
                                 $(this).parents("tr").removeClass("selected");
-                                console.log("unchecked");
+                                //console.log("unchecked");
                             }
                         });
                 }
@@ -217,7 +217,7 @@
                 }
             },
             handleSentTweets = function (data) {
-                console.log(data);
+                //console.log(data);
                 var oldHandleFetchedTweets = handleFetchedTweets,
                     newHandleFetchedTweets = function (data) {
                         if (start < last) {
@@ -238,7 +238,7 @@
                 fetchTweets();
             },
             handleDeletedTweets = function (data) {
-                console.log(data);
+                //console.log(data);
                 start -= $("#main-table tbody tr.selected").length;
                 $("#main-table tbody tr.selected").remove();
             };
@@ -254,7 +254,7 @@
                             for (var i = 0; i < messages.length; i++) {
                                 $("#messages").append("<option>" + messages[i] + "</option>");
                             }
-                            console.log(messages);
+                            //console.log(messages);
                         }
         });
         
