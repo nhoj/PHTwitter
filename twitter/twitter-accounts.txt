@@ -1,0 +1,10 @@
+account_name:twitter account 1
+consumer_key:LhOBLJBolhi879697
+consumer_secret:HJIIkjui89766kjgiugv
+user_token:83475983475-kjsbd9876h
+user_secret:kjsgKJBIJ986LH
+account_name:twitter account 2
+consumer_key:klajdbgKBLIU9768kjl
+consumer_secret:skdfjlkLNLN987
+user_token:98w4985345-lsfgOHO
+user_secret:dfgkjdfgdfg

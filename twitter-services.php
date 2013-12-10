@@ -122,18 +122,24 @@ switch ($post->method) {
     case 6:
         $db = new mysqli('localhost', 'root', 'root', 'PHTwitter');
         
-        $twitterOAuth = file_get_contents("twitter/twitter-account.txt");
+        $twitterOAuth = file_get_contents("twitter/twitter-accounts.txt");
         $twitterOAuthArray = explode("\n", $twitterOAuth);
         foreach ($twitterOAuthArray as $index => $item) {
             $twitterOAuthArray[$index] = end(explode(":", $item));
         }
-
+        
+        $i = 0;
+        while ($twitterOAuthArray[$i] != $post->account) {
+            $i += 5;
+        }
+        
         $tmhOAuth = new tmhOAuth(array(
-                                        'consumer_key'    => $twitterOAuthArray[0],
-                                        'consumer_secret' => $twitterOAuthArray[1],
-                                        'user_token'      => $twitterOAuthArray[2],
-                                        'user_secret'     => $twitterOAuthArray[3],
+                                        'consumer_key'    => $twitterOAuthArray[$i + 1],
+                                        'consumer_secret' => $twitterOAuthArray[$i + 2],
+                                        'user_token'      => $twitterOAuthArray[$i + 3],
+                                        'user_secret'     => $twitterOAuthArray[$i + 4],
                                 ));
+        
         
         $method = "https://api.twitter.com/1.1/statuses/update.json";                                                
         
@@ -172,10 +178,31 @@ switch ($post->method) {
                     "query" => $q,
                     "message" => $arr,
                     "statuses" => $arr2
-
                 ));
         
         $db->close();
+        break;
+        
+    // get accounts
+    case 8:
+        $twitterOAuth = file_get_contents("twitter/twitter-accounts.txt");
+        $twitterOAuthArray = explode("\n", $twitterOAuth);
+        foreach ($twitterOAuthArray as $index => $item) {
+            $twitterOAuthArray[$index] = end(explode(":", $item));
+        }
+        
+        $arr = array();
+        $i = 0;
+        while ($i < count($twitterOAuthArray)) {
+            $arr[] = $twitterOAuthArray[$i];
+            $i += 5;
+        }
+        
+        echo json_encode(array(
+                    "code" => 1,
+                    "accounts" => $arr
+                ));
+        
         break;
 }
 

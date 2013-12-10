@@ -88,7 +88,7 @@ class TwitterStream {
     public function start () {
         $this->db = new mysqli('localhost:8889', 'root', 'root', 'PHTwitter');
         
-        $twitterOAuth = file_get_contents("twitter-account.txt");
+        $twitterOAuth = file_get_contents("streaming-twitter-account.txt");
         $twitterOAuthArray = explode("\n", $twitterOAuth);
         foreach ($twitterOAuthArray as $index => $item) {
             $twitterOAuthArray[$index] = end(explode(":", $item));

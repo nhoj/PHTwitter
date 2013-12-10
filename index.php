@@ -29,6 +29,7 @@
             </div>
             <div class="col-md-4">
                 <select class="form-control" id="messages"></select>
+                <select class="form-control" id="accounts"></select>
 
                 <button type="button" class="btn btn-primary" id="send-tweet">Send reply to selected tweets</button>
                 <button type="button" class="btn btn-primary" id="delete-tweet">Delete selected tweets</button>
@@ -102,7 +103,8 @@
                         JSON.stringify({
                             "method": 6,
                             "tweetIDs": tweetIDs,
-                            "message": $("#messages").find(":selected").text()
+                            "message": $("#messages").find(":selected").text(),
+                            "account": $("#accounts").find(":selected").text()
                         }),
                         handleSentTweets
                     );
@@ -235,6 +237,18 @@
                             //console.log(messages);
                         }
         });
+        
+        // get accounts
+        $.post("twitter-services.php", 
+            JSON.stringify({
+                "method": 8
+            }),
+            function (data) {
+                for (var i = 0; i < data.accounts.length; i++) {
+                    $("#accounts").append("<option>" + data.accounts[i] + "</option>");
+                }
+            }
+        );
     
         $("#start-stream").click(startStream);
         $("#stop-stream").click(stopStream);
