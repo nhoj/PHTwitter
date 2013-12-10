@@ -32,7 +32,7 @@ SETUP TWITTER
     - Can have more than one account. Just copy and paste the 5 keys and fill out the necessary information
     - `account_name` is the name of the account to be shown on the web app.
     - __NOTE__:
-        - The contentx of the file are just sample values. They don't work. Fill out your own account information
+        - The contents of the file are just sample values. They don't work. Fill out your own account information
 
 
 RUN THE WEB APP
