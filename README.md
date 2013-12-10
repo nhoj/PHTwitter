@@ -4,6 +4,7 @@ Phone Halo Twitter
 
 INSTALL SERVER
 --------------
+  - __NOTE__: This instruction is only for Macs.
   - You may put this folder anywhere it is convenient to you.
     - Make sure this folder and all of its contents are readable and writable to all users.
     	- On the Finder window, right click on this folder and choose `Get Info`.
