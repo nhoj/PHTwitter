@@ -17,21 +17,41 @@
     <div class="container">
         <h1>Phone Halo Twitter Server</h1>
         
-        <button type="button" class="btn btn-primary hidden" disabled="disabled" id="start-stream">Start Stream</button>
-        <button type="button" class="btn btn-primary hidden" disabled="disabled" id="stop-stream">Stop Stream</button>
+        <button type="button" class="btn btn-primary hidden" disabled="disabled" id="start-stream">Start Stream</button>&nbsp;
+        <button type="button" class="btn btn-primary hidden" disabled="disabled" id="stop-stream">Stop Stream</button>&nbsp;
         <button type="button" class="btn btn-primary" id="fetch-tweets">Fetch Tweets</button>
-
+        
+        <p>&nbsp;</p>
+        
         <div class="row">
             <div class="col-md-8 table-responsive">
                 <table id="main-table" class="table table-condensed table-hover">
-
+                    <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th>Date</th>
+                            <th>Twitter User</th>
+                            <th>Tweet</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
                 </table>
             </div>
             <div class="col-md-4">
-                <select class="form-control" id="messages"></select>
-                <select class="form-control" id="accounts"></select>
-
+                <p>
+                    Choose message to send:<br />
+                    <select class="form-control" id="messages"></select>
+                </p>
+                
+                <p>
+                    Choose account to send/reply:<br />
+                    <select class="form-control" id="accounts"></select>
+                </p>
+                
+                <p>&nbsp;</p>
                 <button type="button" class="btn btn-primary" id="send-tweet">Send reply to selected tweets</button>
+                <br />
+                <br />
                 <button type="button" class="btn btn-primary" id="delete-tweet">Delete selected tweets</button>
             </div>
         </div>
@@ -80,7 +100,7 @@
                 );
             },
             fetchTweets = function (callback) {
-                //console.log("fetching tweets", start, limit);
+                console.log("fetching tweets", start, limit);
                 $("#fetch-tweets").attr("disabled", "disabled");
                 $.post("twitter-services.php", 
                     JSON.stringify({
@@ -93,7 +113,7 @@
             },
             sendTweet = function (callback) {
                 var tweetIDs = []
-                $("#main-table tr.selected").each(function (index, element) {
+                $("#main-table tbody tr.selected").each(function (index, element) {
                     tweetIDs.push($(element).attr("tweet-tweet-id"));
                 });
                 
@@ -112,7 +132,7 @@
             },
             deleteTweets = function (callback) {
                 var tweetIDs = []
-                $("#main-table tr.selected").each(function (index, element) {
+                $("#main-table tbody tr.selected").each(function (index, element) {
                     tweetIDs.push($(element).attr("tweet-tweet-id"));
                 });
                 
@@ -129,19 +149,19 @@
     
         // callbacks
         var handleStartStream = function (data) {
-                //console.log(data);
+                console.log(data);
 
                 $("#stop-stream").removeAttr("disabled", "");
                 $("#start-stream").attr("disabled", "disabled");
             },
             handleStopStream = function (data) {
-                //console.log(data);
+                console.log(data);
 
                 $("#start-stream").removeAttr("disabled", "");
                 $("#stop-stream").attr("disabled", "disabled");
             },
             handleIsStreaming = function (data) {
-                //console.log("here's the data: ", data);
+                console.log("here's the data: ", data);
 
                 $("#start-stream, #stop-stream").removeClass("hidden");
                 if (data.code === 1 && data.message) {
@@ -174,17 +194,17 @@
                 }
 
                 for (i = 0; i < rows.length; i++) {
-                    rows[i].appendTo("#main-table");
-                    $("#main-table")
+                    rows[i].appendTo("#main-table tbody");
+                    $("#main-table tbody")
                         .find("tr:last")
                         .find("input")
                         .click(function () {
                             if ($(this).is(":checked")) {
                                 $(this).parents("tr").addClass("selected");
-                                //console.log("checked", $(this).parents("tr"));
+                                console.log("checked", $(this).parents("tr"));
                             } else {
                                 $(this).parents("tr").removeClass("selected");
-                                //console.log("unchecked");
+                                console.log("unchecked");
                             }
                         });
                 }
@@ -197,7 +217,7 @@
                 }
             },
             handleSentTweets = function (data) {
-                //console.log(data);
+                console.log(data);
                 var oldHandleFetchedTweets = handleFetchedTweets,
                     newHandleFetchedTweets = function (data) {
                         if (start < last) {
@@ -212,15 +232,15 @@
 
                 var last = start;
                 
-                $("#main-table").empty();
+                $("#main-table tbody").empty();
                 handleFetchedTweets = newHandleFetchedTweets;
                 start = 0;
                 fetchTweets();
             },
             handleDeletedTweets = function (data) {
-                //console.log(data);
-                start -= $("#main-table tr.selected").length;
-                $("#main-table tr.selected").remove();
+                console.log(data);
+                start -= $("#main-table tbody tr.selected").length;
+                $("#main-table tbody tr.selected").remove();
             };
 
         isStreaming();
@@ -234,7 +254,7 @@
                             for (var i = 0; i < messages.length; i++) {
                                 $("#messages").append("<option>" + messages[i] + "</option>");
                             }
-                            //console.log(messages);
+                            console.log(messages);
                         }
         });
         
@@ -252,9 +272,10 @@
     
         $("#start-stream").click(startStream);
         $("#stop-stream").click(stopStream);
-        $("#fetch-tweets").click(fetchTweets);
+        $("#fetch-tweets").click(fetchTweets).trigger("click");
         $("#send-tweet").click(sendTweet);
         $("#delete-tweet").click(deleteTweets);
+        
     </script>
 </body>
 </html>
