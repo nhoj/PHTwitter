@@ -16,6 +16,7 @@
     <style>
         #table-div {
             overflow: auto;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -203,14 +204,20 @@
                     rows[i].appendTo("#main-table tbody");
                     $("#main-table tbody")
                         .find("tr:last")
-                        .find("input")
-                        .click(function () {
-                            if ($(this).is(":checked")) {
-                                $(this).parents("tr").addClass("selected");
-                                //console.log("checked", $(this).parents("tr"));
+                        .click(function (event) {
+                            //console.log("row clicked", event.target);
+                            if (!$(event.target).is(":checkbox")) {
+                                if ($(this).find("input").is(":checked")) {
+                                    $(this).find("input").prop("checked", false);
+                                } else {
+                                    $(this).find("input").prop("checked", true);
+                                }
+                            }
+                            
+                            if ($(this).hasClass("selected")) {
+                                $(this).removeClass("selected");
                             } else {
-                                $(this).parents("tr").removeClass("selected");
-                                //console.log("unchecked");
+                                $(this).addClass("selected");
                             }
                         });
                 }
