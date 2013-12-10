@@ -28,12 +28,13 @@ SETUP TWITTER
 	- Go to [Twitter Dev](https://dev.twitter.com) and sign in
     - Create an application. Make sure the `Application Type` access is __Read and Write__ (stream and sending tweets, respectively). 
     - The wizard will automatically generate the four keys mentioned above.
-  - Fill out the file twitter/streaming-twitter-account.txt with the corresponding keys.
+  - Fill out the file twitter/streaming-twitter-account.txt with the corresponding keys. This account will be used to fetch tweets. Do not leave any blank lines after the last line.
   - Fill out the file twitter/twitter-accounts.txt with the corresponding keys. These accounts are used to reply to tweets
     - Can have more than one account. Just copy and paste the 5 keys and fill out the necessary information
     - `account_name` is the name of the account to be shown on the web app.
     - __NOTE__:
         - The contents of the file are just sample values. They don't work. Fill out your own account information
+        - Do not leave any blank lines after the last line.
 
 
 RUN THE WEB APP
