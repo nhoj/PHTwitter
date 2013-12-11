@@ -16,10 +16,9 @@
     <style>
         #table-div {
             overflow: auto;
-            cursor: pointer;
         }
-        #statistics {
-            
+        #table-div tr {
+            cursor: pointer;
         }
     </style>
 </head>
