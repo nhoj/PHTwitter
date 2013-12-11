@@ -21,7 +21,6 @@
             cursor: pointer;
         }
         #statistics {
-            width: 35%;
             margin-top: 20px;
         }
     </style>
@@ -30,24 +29,7 @@
     <div class="container">
         <h1>Phone Halo Twitter Server</h1>
         
-        <button type="button" class="btn btn-primary hidden" disabled="disabled" id="start-stream">Start Stream</button>&nbsp;
-        <button type="button" class="btn btn-primary hidden" disabled="disabled" id="stop-stream">Stop Stream</button>&nbsp;
-        <button type="button" class="btn btn-primary" id="fetch-tweets">Fetch Tweets</button>
         
-        <table id="statistics" class="table table-condensed table-bordered">
-            <tr>
-                <td>Streaming status</td>
-                <td id="is-streaming"></td>
-            </tr>
-            <tr>
-                <td>Tweets in database</td>
-                <td id="num-tweets-db"></td>
-            </tr>
-            <tr>
-                <td>Tweets on this page</td>
-                <td id="num-tweets-app"></td>
-            </tr>
-        </table>
         
         <p id="first-p">&nbsp;</p>
         
@@ -66,6 +48,25 @@
                 </table>
             </div>
             <div class="col-md-4">
+                <button type="button" class="btn btn-primary hidden" disabled="disabled" id="start-stream">Start Stream</button>&nbsp;
+                <button type="button" class="btn btn-primary hidden" disabled="disabled" id="stop-stream">Stop Stream</button>&nbsp;
+                <button type="button" class="btn btn-primary" id="fetch-tweets">Fetch Tweets</button>
+                
+                <table id="statistics" class="table table-condensed table-bordered">
+                    <tr>
+                        <td>Streaming status</td>
+                        <td id="is-streaming"></td>
+                    </tr>
+                    <tr>
+                        <td>Tweets in database</td>
+                        <td id="num-tweets-db"></td>
+                    </tr>
+                    <tr>
+                        <td>Tweets on this page</td>
+                        <td id="num-tweets-app"></td>
+                    </tr>
+                </table>
+                
                 <p>
                     Choose message to send:<br />
                     <select class="form-control" id="messages"></select>
