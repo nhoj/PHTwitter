@@ -18,6 +18,9 @@
             overflow: auto;
             cursor: pointer;
         }
+        #statistics {
+            
+        }
     </style>
 </head>
 <body>
@@ -27,6 +30,12 @@
         <button type="button" class="btn btn-primary hidden" disabled="disabled" id="start-stream">Start Stream</button>&nbsp;
         <button type="button" class="btn btn-primary hidden" disabled="disabled" id="stop-stream">Stop Stream</button>&nbsp;
         <button type="button" class="btn btn-primary" id="fetch-tweets">Fetch Tweets</button>
+        
+        <div id="statistics">
+            Tweets in database: <span id="num-tweets-db"></span> 
+            <br />
+            Tweets on this page: <span id="num-tweets-app"></span> 
+        </div>
         
         <p id="first-p">&nbsp;</p>
         
@@ -213,7 +222,6 @@
                                     $(this).find("input").prop("checked", true);
                                 }
                             }
-                            
                             if ($(this).hasClass("selected")) {
                                 $(this).removeClass("selected");
                             } else {
@@ -228,6 +236,8 @@
                 } else {
                     $("#fetch-tweets").text("No More Tweets").prop("disabled", true);
                 }
+                
+                numRowsApp();
             },
             handleSentTweets = function (data) {
                 //console.log(data);
@@ -254,9 +264,34 @@
                 //console.log(data);
                 start -= $("#main-table tbody tr.selected").length;
                 $("#main-table tbody tr.selected").remove();
+                numRowsApp();
             };
-
+        
+        
+        /*
+            Code execution
+        */
+        
         isStreaming();
+        
+        // get number of rows in the database
+        var numRows = function () {
+                $.post("twitter-services.php", 
+                    JSON.stringify({
+                        "method": 4
+                    }),
+                    function (data) {
+                         //console.log("num rows", data);
+                         $("#num-tweets-db").text(data.data);
+                    }
+                );
+            };
+        numRows();
+        
+        // get number of rows on the app
+        var numRowsApp = function () {
+                $("#num-tweets-app").text($("#main-table tbody tr").length);   
+            };
         
         // get messages:
         $.ajax({
@@ -282,6 +317,9 @@
                 }
             }
         );
+        
+        // get live number of rows every 10 seconds
+        setInterval (numRows, 10000);
     
         $("#start-stream").click(startStream);
         $("#stop-stream").click(stopStream);
