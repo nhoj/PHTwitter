@@ -46,9 +46,9 @@
                 </table>
             </div>
             <div class="col-md-4">
-                <button type="button" class="btn btn-primary hidden" disabled="disabled" id="start-stream">Start Stream</button>&nbsp;
-                <button type="button" class="btn btn-primary hidden" disabled="disabled" id="stop-stream">Stop Stream</button>&nbsp;
-                <button type="button" class="btn btn-primary" id="fetch-tweets">Fetch Tweets</button>
+                <button type="button" class="btn btn-primary btn-sm hidden" disabled="disabled" id="start-stream">Start Stream</button>&nbsp;
+                <button type="button" class="btn btn-primary btn-sm hidden" disabled="disabled" id="stop-stream">Stop Stream</button>&nbsp;
+                <button type="button" class="btn btn-primary btn-sm" id="fetch-tweets">Fetch Tweets</button>
                 
                 <table id="statistics" class="table table-condensed table-bordered">
                     <tr>
@@ -76,10 +76,10 @@
                 </p>
                 
                 <p>&nbsp;</p>
-                <button type="button" class="btn btn-primary" id="send-tweet">Send reply to selected tweets</button>
+                <button type="button" class="btn btn-primary btn-block" id="send-tweet">Send reply to selected tweets</button>
                 <br />
                 <br />
-                <button type="button" class="btn btn-primary" id="delete-tweet">Delete selected tweets</button>
+                <button type="button" class="btn btn-primary btn-block btn-danger" id="delete-tweet">Delete selected tweets</button>
             </div>
         </div>
     </div>
