@@ -271,6 +271,8 @@
                             } else {
                                 $(this).addClass("selected");
                             }
+                            
+                            enableDisableSendAndDeleteTweets();
                         });
                 }
                 
@@ -309,6 +311,13 @@
                 start -= $("#main-table tbody tr.selected").length;
                 $("#main-table tbody tr.selected").remove();
                 numRowsApp();
+            },
+            enableDisableSendAndDeleteTweets = function () {
+                if ($("#main-table tbody tr.selected").length) {
+                    $("#send-tweet, #delete-tweet").prop("disabled", false);
+                } else {
+                    $("#send-tweet, #delete-tweet").prop("disabled", true);
+                }
             };
         
         
@@ -373,6 +382,8 @@
         var tableResize = function () {
             $("#table-div").height($(window).height() - ($("#first-p").height() + $("#first-p").position().top) - 20);
         };
+        
+        enableDisableSendAndDeleteTweets();
         
         tableResize();
         $(window).resize(tableResize);
