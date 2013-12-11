@@ -20,6 +20,10 @@
         #table-div tr {
             cursor: pointer;
         }
+        #statistics {
+            width: 35%;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -30,11 +34,20 @@
         <button type="button" class="btn btn-primary hidden" disabled="disabled" id="stop-stream">Stop Stream</button>&nbsp;
         <button type="button" class="btn btn-primary" id="fetch-tweets">Fetch Tweets</button>
         
-        <div id="statistics">
-            Tweets in database: <span id="num-tweets-db"></span> 
-            <br />
-            Tweets on this page: <span id="num-tweets-app"></span> 
-        </div>
+        <table id="statistics" class="table table-condensed table-bordered">
+            <tr>
+                <td>Streaming status</td>
+                <td id="is-streaming"></td>
+            </tr>
+            <tr>
+                <td>Tweets in database</td>
+                <td id="num-tweets-db"></td>
+            </tr>
+            <tr>
+                <td>Tweets on this page</td>
+                <td id="num-tweets-app"></td>
+            </tr>
+        </table>
         
         <p id="first-p">&nbsp;</p>
         
@@ -175,13 +188,13 @@
         // callbacks
         var handleStartStream = function (data) {
                 console.log(data);
-
+                $("#is-streaming").text("Streaming");
                 $("#stop-stream").removeAttr("disabled", "");
                 $("#start-stream").attr("disabled", "disabled");
             },
             handleStopStream = function (data) {
                 console.log(data);
-
+                $("#is-streaming").text("Not Streaming");
                 $("#start-stream").removeAttr("disabled", "");
                 $("#stop-stream").attr("disabled", "disabled");
             },
@@ -189,10 +202,12 @@
                 console.log("here's the data: ", data);
 
                 $("#start-stream, #stop-stream").removeClass("hidden");
-                if (data.code === 1 && data.message) {
+                if (data.message) {
+                    $("#is-streaming").text("Streaming");
                     $("#stop-stream").removeAttr("disabled", "");
                     $("#start-stream").attr("disabled", "disabled");
                 } else {
+                    $("#is-streaming").text("Not Streaming");
                     $("#start-stream").removeAttr("disabled", "");
                     $("#stop-stream").attr("disabled", "disabled");
                 }
