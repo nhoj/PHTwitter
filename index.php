@@ -29,8 +29,6 @@
     <div class="container">
         <h1>Phone Halo Twitter Server</h1>
         
-        
-        
         <p id="first-p">&nbsp;</p>
         
         <div class="row">
@@ -96,7 +94,24 @@
             </tr>
         </table>
     </div>
-
+    
+    <div class="modal fade" id="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h5 class="modal-title">Error</h5>
+                </div>
+                <div class="modal-body">
+                    No tweets were selected.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -167,6 +182,8 @@
                         }),
                         handleSentTweets
                     );
+                } else {
+                    $("#dialog").modal("show");
                 }
             },
             deleteTweets = function (callback) {
@@ -183,6 +200,8 @@
                         }),
                         handleDeletedTweets
                     );
+                } else {
+                    $("#dialog").modal("show");
                 }
             };
     
@@ -327,7 +346,6 @@
                             for (var i = 0; i < messages.length; i++) {
                                 $("#messages").append("<option>" + messages[i] + "</option>");
                             }
-                            console.log(messages);
                         }
         });
         
