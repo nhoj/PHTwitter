@@ -89,6 +89,16 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap-3.0.2/js/bootstrap.min.js"></script>
     <script>
+        // just in case. test for console.log
+        if (console === undefined) {
+            var console = {
+                    "log": function () {}
+                };
+        }
+        if (console !== undefined && console.log === undefined) {
+            console.log = function () {};
+        }
+        
         // variables
         var limit = 10,
             start = 0;
@@ -116,7 +126,7 @@
                 );
             },
             fetchTweets = function (callback) {
-                //console.log("fetching tweets", start, limit);
+                console.log("fetching tweets", start, limit);
                 $("#fetch-tweets").attr("disabled", "disabled");
                 $.post("twitter-services.php", 
                     JSON.stringify({
@@ -165,19 +175,19 @@
     
         // callbacks
         var handleStartStream = function (data) {
-                //console.log(data);
+                console.log(data);
 
                 $("#stop-stream").removeAttr("disabled", "");
                 $("#start-stream").attr("disabled", "disabled");
             },
             handleStopStream = function (data) {
-                //console.log(data);
+                console.log(data);
 
                 $("#start-stream").removeAttr("disabled", "");
                 $("#stop-stream").attr("disabled", "disabled");
             },
             handleIsStreaming = function (data) {
-                //console.log("here's the data: ", data);
+                console.log("here's the data: ", data);
 
                 $("#start-stream, #stop-stream").removeClass("hidden");
                 if (data.code === 1 && data.message) {
@@ -214,7 +224,7 @@
                     $("#main-table tbody")
                         .find("tr:last")
                         .click(function (event) {
-                            //console.log("row clicked", event.target);
+                            console.log("row clicked", event.target);
                             if (!$(event.target).is(":checkbox")) {
                                 if ($(this).find("input").is(":checked")) {
                                     $(this).find("input").prop("checked", false);
@@ -240,7 +250,7 @@
                 numRowsApp();
             },
             handleSentTweets = function (data) {
-                //console.log(data);
+                console.log(data);
                 var oldHandleFetchedTweets = handleFetchedTweets,
                     newHandleFetchedTweets = function (data) {
                         if (start < last) {
@@ -261,7 +271,7 @@
                 fetchTweets();
             },
             handleDeletedTweets = function (data) {
-                //console.log(data);
+                console.log(data);
                 start -= $("#main-table tbody tr.selected").length;
                 $("#main-table tbody tr.selected").remove();
                 numRowsApp();
@@ -281,7 +291,7 @@
                         "method": 4
                     }),
                     function (data) {
-                         //console.log("num rows", data);
+                         console.log("num rows", data);
                          $("#num-tweets-db").text(data.data);
                     }
                 );
@@ -302,7 +312,7 @@
                             for (var i = 0; i < messages.length; i++) {
                                 $("#messages").append("<option>" + messages[i] + "</option>");
                             }
-                            //console.log(messages);
+                            console.log(messages);
                         }
         });
         
